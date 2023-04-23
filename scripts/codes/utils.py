@@ -47,8 +47,8 @@ def getnewaddress(wallet_name,port):
     })
 
     result = connection(payload,port,"/wallet/"+wallet_name)
-    address[wallet_name] = WalletDetails(wallet_name,result["result"],port)
-    dumpaddress(json.dumps(address))
+    address[wallet_name] = result["result"]
+    dumpaddress()
     return result
 
 def getbalance(wallet_name,port):
@@ -91,15 +91,14 @@ def getrawmempool(port=18400):
     )
 
     result = connection(payload,port)
-    print(result)
-    return json.loads(result)
+    return result["result"]
 
 def generatetoaddress(wallet_name,address,blockcount,port):
     payload = json.dumps({
           "jsonrpc": "2.0",
           "id": 3,
-          "method": "getnewaddress",
-           "params": [address,blockcount]
+          "method": "generatetoaddress",
+           "params": [blockcount,address]
         }
     )
     result = connection(payload,port,"/wallet/"+wallet_name)
@@ -108,6 +107,6 @@ def generatetoaddress(wallet_name,address,blockcount,port):
 def dumpaddress():
     with open("address.txt", 'w') as f: 
         for key, value in address.items(): 
-            f.write('%s:%s\n' % (key, value))
+            f.write('%s:%s\n' % (key, json.dumps(value)))
     print("Written to file")
 
