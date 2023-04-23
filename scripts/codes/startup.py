@@ -27,7 +27,10 @@ from utils import *
 # print(getbalance("amrutha",18402))
 # print(getbalance("ishan",18400))
 
-# sendtoaddress("akmore","bcrt1qwkzwz5kny2evltxza0wus86g6smr0j5dh3wxp7",10,18400)
+# for _ in range(1000):
+#     sendtoaddress("akmore","bcrt1qwkzwz5kny2evltxza0wus86g6smr0j5dh3wxp7",1,18400)
 # print(getbalance("colin",18401))
 
-print(getrawmempool())
+# print(getrawmempool(18401))
+# print(getTransaction("akmore","018f3be014b3ad416fa5bbdf7af0d8cc2cad369f12f11a182b85270965a435dc",18400))
+

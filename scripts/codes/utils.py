@@ -19,7 +19,7 @@ def connection(payload,port,wallet_path = ""):
     "Authorization": "Basic Yml0Y29pbjpiaXRjb2lu",
     "Content-Type": "application/json" 
     }
-    conn.request("POST", wallet_path, payload, headersList)
+    conn.request("POST", "/wallet/"+wallet_path, payload, headersList)
     response = conn.getresponse()
     result = response.read()
     return json.loads(result)
@@ -46,7 +46,7 @@ def getnewaddress(wallet_name,port):
        "params": []
     })
 
-    result = connection(payload,port,"/wallet/"+wallet_name)
+    result = connection(payload,port,wallet_name)
     address[wallet_name] = result["result"]
     dumpaddress()
     return result
@@ -60,7 +60,7 @@ def getbalance(wallet_name,port):
            "params": []
         }
     )
-    result = connection(payload,port,"/wallet/"+wallet_name)
+    result = connection(payload,port,wallet_name)
     return result
 
 def sendtoaddress(wallet_name, sendto, amount,port):
@@ -77,7 +77,7 @@ def sendtoaddress(wallet_name, sendto, amount,port):
         }
     )
 
-    result = connection(payload,port,"/wallet/"+wallet_name)
+    result = connection(payload,port,wallet_name)
     print(result)
 
 def getrawmempool(port=18400):
@@ -101,7 +101,7 @@ def generatetoaddress(wallet_name,address,blockcount,port):
            "params": [blockcount,address]
         }
     )
-    result = connection(payload,port,"/wallet/"+wallet_name)
+    result = connection(payload,port,wallet_name)
     return result
 
 def dumpaddress():
@@ -110,3 +110,26 @@ def dumpaddress():
             f.write('%s:%s\n' % (key, json.dumps(value)))
     print("Written to file")
 
+def getTransaction(wallet_name,hash,port):
+
+    payload = json.dumps({
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "gettransaction",
+           "params": [hash]
+        }
+    )
+    result = connection(payload,port,wallet_name)
+    return result
+def listtransactions(wallet_name,port):
+    payload = json.dumps({
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "listtransactions",
+           "params": {
+                "count" : 1000
+           }
+        }
+    )
+    result = connection(payload,port,wallet_name)
+    return result
