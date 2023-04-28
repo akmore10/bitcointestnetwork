@@ -1,6 +1,6 @@
 from utils import *
 
-# creating wallets
+
 # creatingwallet("akmore",18400)
 # print("Creating wallet akmore")
 # creatingwallet("colin",18401)
@@ -21,14 +21,14 @@ from utils import *
 # print("Creating getnewaddress ishan")
 
 #generating 
-# print(generatetoaddress("akmore","bcrt1qd8ynd8whlj33yaem2qr2n33azytrd52fph4mha",50,18400))
-# print(generatetoaddress("akmore","bcrt1qd8ynd8whlj33yaem2qr2n33azytrd52fph4mha",50,18400))
-# print(generatetoaddress("colin","bcrt1qt7ewfj9dvq6saxa78cdgjgucprf2aalu489str",50,18401))
-# print(generatetoaddress("colin","bcrt1qt7ewfj9dvq6saxa78cdgjgucprf2aalu489str",50,18401))
-# print(generatetoaddress("amrutha","bcrt1q93l0rtuny75rrc5x0fr54d0qtxflrd7r9cqd8w",100,18402))
-# print(generatetoaddress("amrutha","bcrt1q93l0rtuny75rrc5x0fr54d0qtxflrd7r9cqd8w",100,18402))
-# print(generatetoaddress("ishan","bcrt1q8s5gm93qqwxl8z5dkexagaw76qnwvw6h27cqm0",100,18400))
-# print(generatetoaddress("ishan","bcrt1q8s5gm93qqwxl8z5dkexagaw76qnwvw6h27cqm0",100,18400))
+# print(generatetoaddress("akmore","bcrt1q50mdnh0davealarn4kl43edvv4gg8khh7uuxpf",50,18400))
+# print(generatetoaddress("akmore","bcrt1q50mdnh0davealarn4kl43edvv4gg8khh7uuxpf",50,18400))
+# print(generatetoaddress("colin","bcrt1qgr78dgnuk3ljarcyj57dqs4x0hzxgsv4fjlw4u",50,18401))
+# print(generatetoaddress("colin","bcrt1qgr78dgnuk3ljarcyj57dqs4x0hzxgsv4fjlw4u",50,18401))
+# print(generatetoaddress("amrutha","bcrt1qafkecw7tvjhaeagv5xx9mux5fqmzyks3c5ahxt",100,18402))
+# print(generatetoaddress("amrutha","bcrt1qafkecw7tvjhaeagv5xx9mux5fqmzyks3c5ahxt",100,18402))
+# print(generatetoaddress("ishan","bcrt1qwc79ndthkt6htd3ltzh5w833chrjdg44uffw8k",100,18400))
+# print(generatetoaddress("ishan","bcrt1qwc79ndthkt6htd3ltzh5w833chrjdg44uffw8k",100,18400))
 
 # print("Getting balance of akmore")
 # print(getbalance("akmore",18400))
@@ -39,15 +39,16 @@ from utils import *
 # print("Getting balance of ishan")
 # print(getbalance("ishan",18400))
 
-# for _ in range(100):
-#     print("Sending 1 BTC to colin's wallet")
-#     sendtoaddress("akmore","bcrt1qt7ewfj9dvq6saxa78cdgjgucprf2aalu489str",1,18400)
+# for _ in range(50):
+#     print("Sending 1 BTC to amrutha's wallet")
+#     sendtoaddress("akmore","bcrt1qafkecw7tvjhaeagv5xx9mux5fqmzyks3c5ahxt",1,18400)
 # print(getbalance("colin",18401))
-# print("Getting the transaction id from Mempool")
-# result = getrawmempool(18401)
-# for res in result:
-#     print(res)
 
-print("Getting Transaction from the transaction id :")
-print(getTransaction("akmore","4f99b42d2deda7ef7e670e133afb56f627e79b6e3b6428c9616cc63b3eeedfec",18400))
+# print("Getting the transaction id from Mempool")
+result = getrawmempool(18400)
+print(len(result))
+
+
+
+# print(getRawTransactions("f7cd3697314df130b840ea6838cfa9acd4d60574f8fda77cddbdcc053e975eae"))
 

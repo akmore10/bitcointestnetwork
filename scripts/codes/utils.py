@@ -3,6 +3,7 @@ import json
 
 address = {}
 PORTS = (18400,18401,18402)
+
 class WalletDetails:
     def __init__(self,name,address,port):
         self.name = name
@@ -133,3 +134,18 @@ def listtransactions(wallet_name,port):
     )
     result = connection(payload,port,wallet_name)
     return result
+
+def getRawTransactions(id):
+    payload = json.dumps({
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "getrawtransaction",
+           "params": {
+                "txid" : id,
+                "verbose" : True
+           }
+        }
+    )
+
+    result = connection(payload,18400,"")
+    return result["result"]
