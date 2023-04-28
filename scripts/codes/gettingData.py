@@ -6,8 +6,6 @@ result = getrawmempool(18400)
 for res in result:
     data.append(getRawTransactions(res))
 df = pd.DataFrame(data)
-# print(df.columns)
-df = df.drop("vin",axis=1)
 df.to_csv("transactions.csv",index=False)
 
 # result = result["result"]
